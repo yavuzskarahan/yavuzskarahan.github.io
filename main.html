@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Encyclopedia Galactica</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="icon.png"/>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Arka plan resim dosyalarını içeren dizi
+      var backgroundImages = ["back.jpg", "back1.png", "back2.jpg", "back4.png", "back5.jpg"];
+
+      // Rastgele bir indeks seç
+      var randomIndex = Math.floor(Math.random() * backgroundImages.length);
+
+      // Seçilen dosya adını kullanarak arka plan resmini ayarla
+      var selectedBackground = backgroundImages[randomIndex];
+      document.body.style.backgroundImage = `url("${selectedBackground}")`;
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <img src="logo2.png" alt="logo" class="logo">
+    <div class="searchcon">
+      <form class="search-bar" action="https://www.google.com/search" method="GET">
+        <input type="text" placeholder="Type to search..." id="searchQuery" name="q" required>
+      </form>
+    </div>
+    <div class="shortcuts">
+
+      <div class ="shortdiv">
+        <a href="https:\\www.cses.fi" class="shortcut">
+            <img src="cses.png" alt="cses">
+        </a>
+        <p>cses</p>
+      </div>
+
+      <div class ="shortdiv">
+        <a href="https://codeforces.com/profile/yavuzskarahan" class="shortcut">
+          <img src="cf.png" alt="codeforces">
+        </a>
+        <p>codeforces</p>
+      </div>
+
+      <div class ="shortdiv">
+        <a href="https://usaco.guide/" class="shortcut">
+          <img src="usaco.png" alt="usaco">
+        </a>
+        <p>usaco</p>
+      </div>
+
+
+      <div class ="shortdiv">
+        <a href="https://github.com/yavuzskarahan" class="shortcut">
+          <img src="github.png" alt="github">
+        </a>
+        <p>github</p>
+      </div>
+
+      <div class ="shortdiv">
+        <a href="https://makersuite.google.com/app/prompts/new_freeform" class="shortcut">
+          <img src="gemini.png" alt="gemini">
+        </a>
+        <p>gemini</p>
+      </div>
+
+
+      <div class ="shortdiv">
+        <a href="https://chat.openai.com/" class="shortcut">
+          <img src="gpt.png" alt="ChatGPT">
+        </a>  
+        <p>chatgpt</p>
+      </div>
+
+
+
+
+      <div class ="shortdiv">
+        <a href="https://ifl.meb.k12.tr" class="shortcut">
+          <img src="ifllogo.png" alt="ifl">
+        </a>  
+        <p>ifl</p>
+      </div>
+
+
+      <div class ="shortdiv">
+        <a href="https://youtube.com" class="shortcut">
+          <img src="youtube.png" alt="youtube">
+        </a>
+        <p>youtube</p>
+      </div>
+
+
+
+      <div class ="shortdiv">
+        <a href="https://keep.google.com/" class="shortcut">
+          <img src="keep.png" alt="keep">
+        </a>
+        <p>keep</p>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</body>
+</html>
