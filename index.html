@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yavuzskarahan</title>
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background: #111;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .header {
+            font-weight: 600;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        .console-container {
+            display: flex;
+            align-items: center;
+            font-size: 2em;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .console-text {
+            display: inline-block;
+            font-size: 2.5em;
+            animation: fadeIn 2s ease-in-out;
+            text-decoration: none;
+        }
+        .console-underscore {
+            display: inline-block;
+            font-size: 2.5em;
+            margin-left: 5px;
+            animation: blink 1s step-start infinite;
+        }
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #4A86E8;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">yavuzskarahan.</div>
+    <div class="console-container">
+        <a href="https://github.com/yavuzskarahan" id="text" class="console-text"></a>
+        <div class="console-underscore" id="console">&#95;</div>
+    </div>
+    <div class="social-icons">
+        <a href="https://twitter.com/yavuzskarahan_" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://github.com/yavuzskarahan" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/yavuzskarahan" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <script>
+        function consoleText(words, id, colors, links) {
+            if (!colors) colors = ['#fff'];
+            if (!links) links = ['#'];
+            let visible = true;
+            const con = document.getElementById('console');
+            let letterCount = 1;
+            let x = 1;
+            let waiting = false;
+            const target = document.getElementById(id);
+            target.style.color = colors[0];
+            target.href = links[0];
+
+            setInterval(() => {
+                if (letterCount === 0 && !waiting) {
+                    waiting = true;
+                    target.innerHTML = words[0].substring(0, letterCount);
+                    setTimeout(() => {
+                        const usedColor = colors.shift();
+                        colors.push(usedColor);
+                        const usedLink = links.shift();
+                        links.push(usedLink);
+                        const usedWord = words.shift();
+                        words.push(usedWord);
+                        x = 1;
+                        target.style.color = colors[0];
+                        target.href = links[0];
+                        letterCount += x;
+                        waiting = false;
+                    }, 1000);
+                } else if (letterCount === words[0].length + 1 && !waiting) {
+                    waiting = true;
+                    setTimeout(() => {
+                        x = -1;
+                        letterCount += x;
+                        waiting = false;
+                    }, 1000);
+                } else if (!waiting) {
+                    target.innerHTML = words[0].substring(0, letterCount);
+                    letterCount += x;
+                }
+            }, 120);
+
+            setInterval(() => {
+                con.classList.toggle('hidden', !visible);
+                visible = !visible;
+            }, 400);
+        }
+
+        consoleText(
+            ['iflbot();', 'aerop();', 'preveze();'],
+            'text',
+            ['#007FFF','#4A86E8','#5DE1AE'],
+            [
+                'iflbot.com.tr',
+                'https://github.com/yavuzskarahan/aerop',
+                'https://github.com/yavuzskarahan/preveze'
+            ]
+        );
+    </script>
+</body>
+</html>
